@@ -14,7 +14,7 @@
     {{ value.name }}
     </li>
 </ul>
-<input type="text" class="form-control" v-on:change="changepk">
+<!-- <input type="text" class="form-control" v-on:change="changepk"> -->
 
   </div>
 </template>
@@ -49,11 +49,11 @@ export default {
     create: function () {
 
     },
-    changepk(event){
-      var url=https://pokeapi.co/api/v2/pokemon/
-      this.email=event.target.value
-      console.log(event.target.value)
-    }
+    // changepk(event){
+    //   var url=https://pokeapi.co/api/v2/pokemon/
+    //   this.email=event.target.value
+    //   console.log(event.target.value)
+    // }
   },
   mounted () {
     axios
