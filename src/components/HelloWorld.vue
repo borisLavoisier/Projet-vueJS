@@ -3,6 +3,8 @@
     <div id="imglogo">
       <img class="logoPokemon" src="../assets/Pokemon.jpeg" alt="#">
     </div>
+    <input id="namepoke" type="text" class="form-control" v-on:change="changepk">
+    <p>{{this.namepk}}</p>
     <h1 id="idh1">Trouve ton POKEMON</h1>
     <button v-on:click="clicked">clicked</button>
     <button v-on:click="hide">hide</button>
@@ -13,9 +15,7 @@
     <li class="nomPoke" v-for="value in this.reqpoke">
     {{ value.name }}
     </li>
-</ul>
-<!-- <input type="text" class="form-control" v-on:change="changepk"> -->
-
+  </ul>
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       info: null,
       reqpoke:null,
+      namepk:null
     
     }
   }
@@ -49,11 +50,14 @@ export default {
     create: function () {
 
     },
-    // changepk(event){
-    //   var url=https://pokeapi.co/api/v2/pokemon/
-    //   this.email=event.target.value
-    //   console.log(event.target.value)
-    // }
+    changepk(event){
+      var url="https://pokeapi.co/api/v2/pokemon/"+document.getElementById("namepoke").value
+      axios
+      .get(url)
+      .then(response =>{
+        this.namepk = response.data.name
+      console.log(response)})
+    }
   },
   mounted () {
     axios
